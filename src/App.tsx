@@ -1,4 +1,4 @@
-import { useCartStore, useCartStats } from '@/stores/useCartStore'
+import { useCartStore } from '@/stores/useCartStore'
 import { Header } from '@/components/Header'
 import { PRLoader } from '@/components/PRLoader'
 import { FileList } from '@/components/FileList'
@@ -7,7 +7,6 @@ import { DiffViewer } from '@/components/DiffViewer'
 
 function App() {
   const { pr, isLoading, error } = useCartStore()
-  const stats = useCartStats()
 
   return (
     <div className="min-h-screen bg-gh-bg text-gh-text flex flex-col">

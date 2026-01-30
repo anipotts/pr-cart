@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useCartStore, useCartStats, useSelectedFiles } from '@/stores/useCartStore'
-import { generatePatch, downloadPatch } from '@/services/patch'
 import { CheckoutModal } from '@/components/CheckoutModal'
 
 export function CartSummary() {

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useCartStore, useCartStats } from '@/stores/useCartStore'
-import { generatePatch, downloadPatch, getPatchStats } from '@/services/patch'
+import { generatePatch, downloadPatch } from '@/services/patch'
 
 interface CheckoutModalProps {
   onClose: () => void

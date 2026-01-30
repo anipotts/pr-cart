@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { CartStore, PRData } from '@/types'
+import type { CartStore } from '@/types'
 import { parsePRUrl } from '@/utils/url'
 import { fetchPR } from '@/services/github'
 
