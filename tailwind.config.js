@@ -1,25 +1,33 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'media',
   theme: {
     extend: {
       colors: {
-        // GitHub-inspired colors
-        'gh-green': '#238636',
-        'gh-red': '#da3633',
-        'gh-blue': '#58a6ff',
-        'gh-border': '#30363d',
-        'gh-bg': '#0d1117',
-        'gh-bg-secondary': '#161b22',
-        'gh-text': '#c9d1d9',
-        'gh-text-muted': '#8b949e',
+        bg: {
+          primary: '#0a0a0a',
+          secondary: '#141414',
+          card: '#1a1a1a',
+          'card-hover': '#222222',
+        },
+        text: {
+          primary: '#fafafa',
+          secondary: '#a1a1a1',
+          muted: '#6b7280',
+        },
+        accent: {
+          primary: '#3b82f6',
+          success: '#22c55e',
+          danger: '#ef4444',
+          warning: '#f59e0b',
+        },
+        border: '#2a2a2a',
       },
       fontFamily: {
-        mono: ['ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
     },
   },
