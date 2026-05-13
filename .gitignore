@@ -26,8 +26,12 @@ build
 *.log
 npm-debug.log*
 
-# Vercel
+# Vercel (legacy, project migrating off Vercel)
 .vercel
+
+# Cloudflare Workers + OpenNext
+.open-next/
+.wrangler/
 
 # Testing
 coverage
