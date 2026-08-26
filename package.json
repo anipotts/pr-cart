@@ -16,7 +16,7 @@
     "cf:deploy": "pnpm run cf:build && wrangler deploy"
   },
   "dependencies": {
-    "next": "^16.2.6",
+    "next": "^16.2.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "framer-motion": "^11.0.0",
