@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import confetti from 'canvas-confetti'
 
@@ -41,31 +42,39 @@ export default function ShopPage() {
   const [patchContent, setPatchContent] = useState('')
 
   useEffect(() => {
-    fetchPR()
-  }, [owner, repo, number])
+    // A slower response for a previous PR must not overwrite the current one.
+    let cancelled = false
 
-  async function fetchPR() {
-    setLoading(true)
-    setError('')
+    async function fetchPR() {
+      setLoading(true)
+      setError('')
 
-    try {
-      // Fetch PR data
-      const prRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/pulls/${number}`)
-      if (!prRes.ok) throw new Error('PR not found')
-      const prData = await prRes.json()
-      setPR(prData)
+      try {
+        // Fetch PR data
+        const prRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/pulls/${number}`)
+        if (!prRes.ok) throw new Error('PR not found')
+        const prData = await prRes.json()
+        if (cancelled) return
+        setPR(prData)
 
-      // Fetch files
-      const filesRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/pulls/${number}/files`)
-      if (!filesRes.ok) throw new Error('Could not fetch files')
-      const filesData = await filesRes.json()
-      setFiles(filesData)
-    } catch (err: any) {
-      setError(err.message || 'Failed to load PR')
-    } finally {
-      setLoading(false)
+        // Fetch files
+        const filesRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/pulls/${number}/files`)
+        if (!filesRes.ok) throw new Error('Could not fetch files')
+        const filesData = await filesRes.json()
+        if (cancelled) return
+        setFiles(filesData)
+      } catch (err) {
+        if (!cancelled) setError(err instanceof Error && err.message ? err.message : 'Failed to load PR')
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
     }
-  }
+
+    fetchPR()
+    return () => {
+      cancelled = true
+    }
+  }, [owner, repo, number])
 
   function toggleCart(filename: string) {
     setCart(prev => {
@@ -142,9 +151,9 @@ export default function ShopPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <p className="text-accent-danger text-xl mb-4">{error}</p>
-          <a href="/" className="text-accent-primary hover:underline">
+          <Link href="/" className="text-accent-primary hover:underline">
             ← Back to home
-          </a>
+          </Link>
         </div>
       </div>
     )
@@ -178,12 +187,12 @@ export default function ShopPage() {
             >
               Copy to Clipboard
             </button>
-            <a
+            <Link
               href="/"
               className="block text-text-secondary hover:text-text-primary transition-colors"
             >
               ← Shop another PR
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -196,10 +205,10 @@ export default function ShopPage() {
       <header className="sticky top-0 z-40 border-b border-border bg-bg-primary/95 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <a href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
               <span className="text-2xl">🛒</span>
               <span className="font-semibold hidden sm:inline">PRCart</span>
-            </a>
+            </Link>
             <span className="text-text-muted">/</span>
             <span className="text-text-secondary truncate max-w-[200px] sm:max-w-none">
               {owner}/{repo} #{number}
