@@ -25,7 +25,7 @@
     "zustand": "^4.5.0"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.19.9",
+    "@opennextjs/cloudflare": "^1.20.2",
     "@types/canvas-confetti": "^1.6.0",
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
