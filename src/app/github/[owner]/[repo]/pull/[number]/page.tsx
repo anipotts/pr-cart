@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import confetti from 'canvas-confetti'
+import { generateSelectedPatch } from '@/lib/patch'
 
 interface PRFile {
   filename: string
@@ -98,13 +99,7 @@ export default function ShopPage() {
 
   function generatePatch(): string {
     const selectedFiles = files.filter(f => cart.has(f.filename))
-    const patches = selectedFiles
-      .filter(f => f.patch)
-      .map(f => {
-        const header = `diff --git a/${f.filename} b/${f.filename}\n--- a/${f.filename}\n+++ b/${f.filename}`
-        return `${header}\n${f.patch}`
-      })
-    return patches.join('\n\n')
+    return generateSelectedPatch(selectedFiles)
   }
 
   function handleCheckout() {

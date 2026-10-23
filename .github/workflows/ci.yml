@@ -31,7 +31,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm typecheck
+      - run: pnpm test
       # The Cloudflare bundle that deploys, not only `next build`.
       - run: pnpm exec opennextjs-cloudflare build
-      # No test suite yet: this boots the built worker and renders two routes.
+      # Boot the built runtime as well as exercising patch serialization above.
       - run: scripts/smoke.sh

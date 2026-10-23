@@ -11,6 +11,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "test:download": "node scripts/check-patch-download.mjs",
     "cf:build": "next build && opennextjs-cloudflare build",
     "cf:preview": "wrangler dev",
     "cf:deploy": "pnpm run cf:build && wrangler deploy",
