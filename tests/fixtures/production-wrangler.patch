@@ -1,0 +1,10 @@
+diff --git a/wrangler.toml b/wrangler.toml
+--- a/wrangler.toml
++++ b/wrangler.toml
+@@ -1,5 +1,5 @@
+ name = "prcart"
+-compatibility_date = "2025-04-01"
++compatibility_date = "2026-10-01"
+ compatibility_flags = ["nodejs_compat"]
+ account_id = "0f856093bdcd34a7da1bde5ee4385163"
+ main = ".open-next/worker.js"

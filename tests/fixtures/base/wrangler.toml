@@ -1,0 +1,26 @@
+name = "prcart"
+compatibility_date = "2025-04-01"
+compatibility_flags = ["nodejs_compat"]
+account_id = "0f856093bdcd34a7da1bde5ee4385163"
+main = ".open-next/worker.js"
+workers_dev = true
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+[observability]
+enabled = true
+
+# Custom-domain bind. Uncomment after the prcart.dev zone is added
+# in the Cloudflare dashboard (i.e. after the Namecheap NS swap propagates).
+#
+# [[routes]]
+# pattern = "prcart.dev"
+# custom_domain = true
+# zone_id = "<set after zone is created>"
+#
+# [[routes]]
+# pattern = "www.prcart.dev"
+# custom_domain = true
+# zone_id = "<set after zone is created>"
