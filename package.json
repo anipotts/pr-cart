@@ -21,24 +21,24 @@
   "dependencies": {
     "canvas-confetti": "^1.9.0",
     "framer-motion": "^11.0.0",
-    "next": "^16.4.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "^16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "zustand": "^4.5.0"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.13",
+    "@opennextjs/cloudflare": "^1.20.16",
     "@types/canvas-confetti": "^1.6.0",
     "@types/node": "^20.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "autoprefixer": "^10.4.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.6.2",
     "eslint": "^9.39.5",
-    "eslint-config-next": "16.4.1",
-    "postcss": "^8.4.0",
+    "eslint-config-next": "16.4.5",
+    "postcss": "^8.5.32",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.4.0",
-    "wrangler": "^4.148.0"
+    "wrangler": "^4.158.0"
   },
   "repository": {
     "type": "git",
